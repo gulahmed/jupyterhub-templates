@@ -1,0 +1,27 @@
+{% extends "templates/error.html" %}
+
+{% block h1_error %}
+{% if status_code == 403 %}
+{{ super() }}
+<p>
+  <strong>It looks like you need to request an account!</strong> If you are a EduCloudLab instructor or  affiliate institue, you can request an account
+  by
+  <a href="">sending us</a> an email from a Google Authentication connected email address. LibreTexts affiliated student
+  accounts should be requested by their instructors.
+</p>
+{% elif status_code == 400 %}
+{{ super() }}
+<p>
+  Please login again from <a href="">the home page</a>.
+</p>
+{% elif status_code == 500 %}
+{{ super() }}
+<p>
+  Oh no! Something is wrong on our end. If this problem persists, please 
+  <a href="">email us</a>.
+</p>
+{% else %}
+{{ super() }}
+{% endif %}
+
+{% endblock h1_error %}
